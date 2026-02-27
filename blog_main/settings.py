@@ -63,6 +63,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'blogs.context_processors.get_categories',
+                'blogs.context_processors.get_about_us',
+                'blogs.context_processors.get_follow_link',
             ],
         },
     },

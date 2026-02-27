@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from blogs.models import Blog, Category
 
@@ -14,3 +14,10 @@ def post_by_category(request , category_id):
         'category' : category
     }
     return render(request ,'post_by_category.html',context)
+
+def single_blog(request ,slug):
+    post = get_object_or_404(Blog, slug=slug)
+    context = {
+        'post' : post
+    }
+    return render(request, 'single_blog.html' , context)
