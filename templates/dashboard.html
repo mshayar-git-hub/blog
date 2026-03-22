@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{%block content%}
+
+<div class="container mt-4">
+    <div class="row">
+
+        <!--sidebar-->
+        {%include 'dashboard/sidebar.html'%}
+
+
+        <!-- Dashboard Content -->
+        <div class="col-md-8">
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            ALL CATEGORIES
+                        </div>
+                        <div class="card-body">
+                            <h3>{{cat_count}}</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            ALL POSTS
+                        </div>
+                        <div class="card-body">
+                            <h3>{{blog_count}}</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{%endblock%}
