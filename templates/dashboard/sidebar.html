@@ -2,6 +2,9 @@
         <div class="col-md-4">
             <div class="list-group">
                 <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action {%if '/dashboard/' in request.path %}bg-warning border-warning{%endif%}">Dashboard</a>
+                {%if perms.auth.view_user%}
+                    <a href="{%url 'users'%}" class="list-group-item list-group-item-action {%if '/users/' in request.path %}bg-warning border-warning{%endif%}">Users</a>
+                {%endif%}
                 <a href="{%url 'dashboard_category'%}" class="list-group-item list-group-item-action {%if '/dashboard_category/' in request.path %}bg-warning border-warning{%endif%}">Categories</a>
                 <a href="{%url 'dash_post'%}" class="list-group-item list-group-item-action {%if '/dash_post/' in request.path %}bg-warning border-warning{%endif%} ">Posts</a>
                 <a href="#" class="list-group-item list-group-item-action">Logout</a>

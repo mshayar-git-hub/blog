@@ -17,4 +17,9 @@ urlpatterns = [
     path('post/dash_add_post',views.dash_add_post,name='dash_add_post'),
     path('post/dash_edit_post/<int:pk>/',views.dash_edit_post,name='dash_edit_post'),
     path('post/dash_delete_post/<int:pk>/',views.dash_delete_post,name='dash_delete_post'),
+    #Users
+    path('users/',views.users,name='users'),
+    path('add_user/',views.add_user,name='add_user'),
+    path('edit_user/<int:pk>',views.edit_user,name='edit_user'),
+    path('delete_user/<int:pk>',views.delete_user,name='delete_user'),
 ]

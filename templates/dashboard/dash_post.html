@@ -40,7 +40,7 @@
         <td>{{i.category}}</td>
         <td>{{i.author}}</td>
         <td>{{i.status}}</td>
-        <td>{{i.is_featured}}</td>
+        <td>{%if i.is_featured %}<i class="fa fa-check-circle text-success"></i>{%else%}<i class="fa fa-times-circle text-danger"></i>{%endif%}</td>
         <td> {{i.created_at}} </td>
         <td> {{i.updated_at}} </td>
         <td>
