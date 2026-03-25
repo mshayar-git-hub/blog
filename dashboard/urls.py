@@ -22,4 +22,6 @@ urlpatterns = [
     path('add_user/',views.add_user,name='add_user'),
     path('edit_user/<int:pk>',views.edit_user,name='edit_user'),
     path('delete_user/<int:pk>',views.delete_user,name='delete_user'),
+    #logout
+    path('dash_logout/',views.dash_logout,name='dash_logout'),
 ]

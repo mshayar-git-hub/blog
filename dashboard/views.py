@@ -3,7 +3,7 @@ from blogs.models import Blog, Category
 from django.contrib.auth.decorators import login_required
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-
+from django.contrib import auth
 from dashboard.forms import AddUserForm, BlogForm, CategoryForm, EditUserForm
 
 # Create your views here.
@@ -151,3 +151,7 @@ def delete_user(request,pk):
     user = get_object_or_404(User,pk=pk)
     user.delete()
     return redirect('users')
+
+def dash_logout(request):
+    auth.logout(request)
+    return redirect('home')
