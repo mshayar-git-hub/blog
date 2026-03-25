@@ -52,3 +52,12 @@ class Follow_link(models.Model):
 
     def __str__ (self):
         return self.platform_name 
+
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    comment = models.TextField(max_length=250)
+
+    def __str__(self):
+        return self.user.username
+    

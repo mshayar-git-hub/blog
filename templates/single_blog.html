@@ -59,7 +59,81 @@
     <div class="container-fluid">
         <section class="mb-5">
             <p class="fs-5 mb-16">{{post.blog_body}}</p>
+            <br/>
+            <br/>
+            <h3>Comments ({{ comments.count }})</h3>
+            
+            {% if comments %}
+            <div id="commentCarousel" class="carousel slide mt-3" data-bs-ride="false">
+            
+                <div class="carousel-inner">
+                    {% for i in comments %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    {{ i.user.username }}
+                                </h6>
+                                <p class="card-text">
+                                    {{ i.comment }}
+                                </p>
+                            </div>
+                        </div>
+            
+                    </div>
+                    {% endfor %}
+                </div>
+
+            {%if not comments.count == 1 %}
+                <!-- 🔹 Previous Button -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#commentCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
+                </button>
+            
+                <!-- 🔹 Next Button -->
+                <button class="carousel-control-next" type="button" data-bs-target="#commentCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle"></span>
+                </button>
+            {%endif%}
+
+            </div>
+            {% else %}
+            <p>No comments yet.</p>
+            {% endif %}
+            <br/>
+            <br/>
+            {%if user.is_authenticated%}
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Leave a Comment</h5>
+            
+                    <form method="POST">
+                        {% csrf_token %}
+            
+                        <div class="mb-3">
+                            <textarea name="comment" class="form-control" rows="3" placeholder="Write your comment..." ></textarea>
+                        </div>
+            
+                        <button type="submit" class="btn btn-primary">
+                            Post Comment
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {%else%}
+            <p><span><a href="{%url 'login'%}">login</a></span> to write  comment</p>
+            {%endif%}
+
         </section>
+
     </div>
 
+
+<style>
+.carousel-item {
+    transition: transform 0.2s ease-in-out;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     {%endblock%}
